@@ -1,9 +1,6 @@
 ﻿using DAL;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DAL.Interfaces;
 
 namespace BLL
 {
@@ -13,7 +10,7 @@ namespace BLL
     internal class Service
     {
         #region Fields
-        private IUnitOfWork uow;
+        private readonly IUnitOfWork uow;
         #endregion
 
         #region Constructors

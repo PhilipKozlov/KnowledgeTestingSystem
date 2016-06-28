@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
-using System.Linq.Expressions;
+using DAL.Interfaces;
+using BLL.Mappers;
+using BLL.Interfaces;
+using BLL.DTO;
 
-namespace BLL
+namespace BLL.Concrete
 {
     /// <summary>
     /// Represents User functionality.
@@ -14,8 +14,8 @@ namespace BLL
     public class UserService : IUserService
     {
         #region Fields
-        private Service service;
-        private IUserRepository repository;
+        private readonly Service service;
+        private readonly IUserRepository repository;
         #endregion
 
         #region Constructors

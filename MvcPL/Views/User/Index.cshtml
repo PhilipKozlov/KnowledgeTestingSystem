@@ -12,6 +12,12 @@
 
 <h2>User Management</h2>
 
+<div style="display:block;float:right;">
+    <a href="@Url.Action("Create", "Role")" class="btn btn-success">
+        Add new role
+        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+    </a>
+</div>
 <table class="table table-hover">
     <tr>
         <th>
@@ -68,4 +74,10 @@
 
 </table>
 
-@Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber}))
+@if (Model.PageCount > 1)
+{
+    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber }))
+}
+<p>
+    @Html.ActionLink("Home", "Index", "Home")
+</p>

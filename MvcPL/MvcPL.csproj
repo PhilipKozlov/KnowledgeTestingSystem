@@ -156,13 +156,16 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Controllers\TestingController.cs" />
     <Compile Include="Controllers\TestResultController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Infrastructure\Authentication\CustomRoleProvider.cs" />
     <Compile Include="Infrastructure\Authentication\CustomMembershipProvider.cs" />
     <Compile Include="Infrastructure\Authentication\CaptchaImage.cs" />
+    <Compile Include="Infrastructure\Helpers\CustomHtmlHelpers.cs" />
     <Compile Include="Infrastructure\Mappers\BllToMvcPLEntityMapper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -232,7 +235,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Test\_Search.cshtml" />
+    <Content Include="Views\Test\_SearchPartial.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
@@ -243,16 +246,16 @@
     <Content Include="Views\Statistics\Statistic.cshtml" />
     <Content Include="Views\Statistics\_UserStatisticPartial.cshtml" />
     <Content Include="Views\TestResult\TestResult.cshtml" />
-    <Content Include="Views\Test\_SearchResults.cshtml" />
+    <Content Include="Views\Test\SearchResults.cshtml" />
     <Content Include="Views\Testing\EditorTemplates\AnswerViewModel.cshtml" />
     <Content Include="Views\Subject\Index.cshtml" />
     <Content Include="Views\Testing\Testing.cshtml" />
     <Content Include="Views\TestResult\TestingResult.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Role\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Infrastructure\Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

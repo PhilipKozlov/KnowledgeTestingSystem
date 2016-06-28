@@ -1,15 +1,12 @@
-﻿using ORM;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Logger;
+using DAL.Interfaces;
 
-namespace DAL
+namespace DAL.Concrete
 {
     /// <summary>
     /// Represents Unit of Work pattern.
@@ -17,8 +14,8 @@ namespace DAL
     public class UnitOfWork : IUnitOfWork
     {
         #region Fields
-        private DbContext context;
-        private ILogger logger = LogManager.GetLogger();
+        private readonly DbContext context;
+        private readonly ILogger logger = LogManager.GetLogger();
         #endregion
 
         #region Constructors

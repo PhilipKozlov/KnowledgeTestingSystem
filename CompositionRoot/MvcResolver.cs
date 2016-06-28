@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ninject;
-using Ninject.Modules;
+﻿using Ninject.Modules;
 using Ninject.Web.Common;
-using DAL;
-using BLL;
+using DAL.Interfaces;
 using ORM;
 using System.Data.Entity;
+using DAL.Concrete;
+using BLL.Interfaces;
+using BLL.Concrete;
 
 namespace CompositionRoot
 {

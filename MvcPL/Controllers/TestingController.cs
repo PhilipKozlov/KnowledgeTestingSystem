@@ -1,10 +1,10 @@
-﻿using BLL;
-using MvcPL.Models;
+﻿using MvcPL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using BLL.Interfaces;
+using MvcPL.Infrastructure.Mappers;
 
 namespace MvcPL.Controllers
 {
@@ -50,16 +50,9 @@ namespace MvcPL.Controllers
 
             if (index > test.Questions.Count)
             {
-                var completedTest = new CompletedTestViewModel
-                {
-                    Test = test,
-                    UserId = userService.GetUserByEmail(User.Identity.Name).Id,
-                    ChoosenAnswers = (ICollection<AnswerViewModel>)Session["Answers"],
-                    TimeSpent = (TimeSpan)ViewBag.Time
-                };
                 try
                 {
-                    var result = testEvalService.EvaluateTest(completedTest.ToBllCompletedTest()).ToTestResultViewModel();
+                    var result = GetResult(test);
                     return RedirectToAction("TestingResult", "TestResult", result);
                 }
                 catch
@@ -78,31 +71,35 @@ namespace MvcPL.Controllers
         [HttpPost]
         public ActionResult Testing(QuestionViewModel question)
         {
-            var answers = new List<AnswerViewModel>();
-            question.Answers.Where(a => a.IsSelected == true).ToList().ForEach(a => answers.Add(a));
-            if (Session["Answers"] != null)
-            {
-                ((ICollection<AnswerViewModel>)Session["Answers"]).Union(answers);
-            }
-            else Session["Answers"] = answers;
+            SaveAnswersToSession(question);
             return RedirectToAction("Testing", new { index = ++question.QuestionNumber});
         }
         #endregion
 
-        #region Private methods
-        //private ICollection<AnswerViewModel> GetUserAnswers(TestViewModel test)
-        //{
-        //    var userAnswers = new List<AnswerViewModel>();
-        //    foreach (var q in test.Questions)
-        //    {
-        //        foreach (var a in q.Answers)
-        //        {
-        //            if (a.IsSelected) userAnswers.Add(a);
-        //        }
-        //    }
-        //    return userAnswers;
-        //}
-        #endregion
+        #region Private Methods
+        private TestResultViewModel GetResult(TestViewModel test)
+        {
+            var completedTest = new CompletedTestViewModel
+            {
+                Test = test,
+                UserId = userService.GetUserByEmail(User.Identity.Name).Id,
+                ChoosenAnswers = (ICollection<AnswerViewModel>)Session["Answers"],
+                TimeSpent = TimeSpan.FromMinutes(0)
+            };
+            Session.Clear();
+            return testEvalService.EvaluateTest(completedTest.ToBllCompletedTest()).ToTestResultViewModel();
+        }
 
+        private void SaveAnswersToSession(QuestionViewModel question)
+        {
+            var answers = new List<AnswerViewModel>();
+            question.Answers.Where(a => a.IsSelected == true).ToList().ForEach(a => answers.Add(a));
+            if (Session["Answers"] != null)
+            {
+                answers.ForEach(a => ((ICollection<AnswerViewModel>)Session["Answers"]).Add(a));
+            }
+            else Session["Answers"] = answers;
+        }
+        #endregion
     }
 }

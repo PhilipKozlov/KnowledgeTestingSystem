@@ -1,11 +1,8 @@
-﻿using BLL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using PagedList;
-using PagedList.Mvc;
+using BLL.Interfaces;
+using MvcPL.Infrastructure.Mappers;
 
 namespace MvcPL.Controllers
 {

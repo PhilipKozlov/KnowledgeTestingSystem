@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using ORM;
+using DAL.DTO;
 
-namespace DAL
+namespace DAL.Mappers
 {
     /// <summary>
     /// Maps ORM entities to DAL entities.

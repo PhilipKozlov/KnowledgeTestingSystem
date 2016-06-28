@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using BLL;
+﻿using System.Linq;
 using MvcPL.Models;
+using BLL.DTO;
 
-namespace MvcPL
+namespace MvcPL.Infrastructure.Mappers
 {
     /// <summary>
     /// Maps BLL entities to Mvc view models.

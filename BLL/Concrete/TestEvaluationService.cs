@@ -1,11 +1,11 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DAL.Interfaces;
+using BLL.Mappers;
+using BLL.Interfaces;
+using BLL.DTO;
 
-namespace BLL
+namespace BLL.Concrete
 {
     /// <summary>
     /// Provides functionality for evaluating tests.
@@ -13,8 +13,8 @@ namespace BLL
     public class TestEvaluationService : ITestEvaluationService
     {
         #region Fields
-        private Service service;
-        private ITestResultRepository repository;
+        private readonly Service service;
+        private readonly ITestResultRepository repository;
         #endregion
 
         #region Constructors
@@ -46,7 +46,12 @@ namespace BLL
 
             foreach (var question in completedTest.Test.Questions)
             {
-                if (completedTest.ChoosenAnswers.Intersect(question.CorrectAnswers).Count() == question.CorrectAnswers.Count) numberOfCorrectAnswers++;
+                int count = 0;
+                foreach (var answer in question.CorrectAnswers)
+                {
+                    if (completedTest.ChoosenAnswers.Select(a => a.Id).Contains(answer.Id)) count++;
+                }
+                if (count == question.CorrectAnswers.Count()) numberOfCorrectAnswers++;
             }
 
             var testResult = new BllTestResult

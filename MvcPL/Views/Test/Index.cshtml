@@ -23,4 +23,7 @@
 
 </div>
 
-@Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber }))
+@if (Model.PageCount > 1)
+{
+    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber }))
+}

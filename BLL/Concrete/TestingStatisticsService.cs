@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
 using System.Linq.Expressions;
+using BLL.Interfaces;
+using BLL.DTO;
 
-namespace BLL
+namespace BLL.Concrete
 {
     /// <summary>
     /// Represents testing statistics functionality.
@@ -14,8 +13,8 @@ namespace BLL
     public class TestingStatisticsService : ITestingStatisticsService
     {
         #region Fields
-        private ITestResultService service;
-        private ITestService testService;
+        private readonly ITestResultService service;
+        private readonly ITestService testService;
         #endregion
 
         #region Constructors
@@ -89,7 +88,7 @@ namespace BLL
             return 0;
         }
 
-        private TimeSpan GetTotalTestingTime(IEnumerable<BllTestResult> testResults) => TimeSpan.FromMilliseconds(testResults.Sum(tr => tr.TimeSpent.Milliseconds));
+        private TimeSpan GetTotalTestingTime(IEnumerable<BllTestResult> testResults) => testResults.Select(tr => tr.TimeSpent).Aggregate(TimeSpan.Zero, (subtotal, t) => subtotal.Add(t));
         #endregion
     }
 }

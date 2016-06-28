@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BLL;
 using MvcPL.Models;
 using System.Web.Security;
 using Logger;
-using System.Globalization;
 using System.Drawing.Imaging;
+using BLL.Interfaces;
+using MvcPL.Infrastructure.Authentication;
 
 namespace MvcPL.Controllers
 {
@@ -43,8 +40,6 @@ namespace MvcPL.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            var type = HttpContext.User.GetType();
-            var iden = HttpContext.User.Identity.GetType();
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -71,7 +66,7 @@ namespace MvcPL.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Subject");
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 else
@@ -155,7 +150,7 @@ namespace MvcPL.Controllers
         public ActionResult Captcha()
         {
             Session["Captcha"] = CaptchaImage.RandomString(8);
-            var ci = new CaptchaImage(Session["Captcha"].ToString(), 211, 50, "Helvetica");
+            var ci = new CaptchaImage(Session["Captcha"].ToString(), 200, 50, "Helvetica");
             Response.Clear();
             Response.ContentType = "image/jpeg";
             ci.Image.Save(Response.OutputStream, ImageFormat.Jpeg);

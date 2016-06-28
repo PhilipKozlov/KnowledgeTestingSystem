@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ORM;
 using System.Linq.Expressions;
+using DAL.Mappers;
+using DAL.Interfaces;
+using DAL.DTO;
 
-namespace DAL
+namespace DAL.Concrete
 {
     /// <summary>
     /// Represents user repository.
@@ -15,8 +16,8 @@ namespace DAL
     public class UserRepository : IUserRepository
     {
         #region Fields
-        private Repository<User> repository;
-        private DbContext context;
+        private readonly Repository<User> repository;
+        private readonly DbContext context;
         #endregion
 
         #region Constructors

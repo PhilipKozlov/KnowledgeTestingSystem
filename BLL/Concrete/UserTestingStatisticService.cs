@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
+using BLL.Interfaces;
+using BLL.DTO;
 
-namespace BLL
+namespace BLL.Concrete
 {
     /// <summary>
     /// Represents system statistics functionality.
@@ -13,7 +11,7 @@ namespace BLL
     public class UserTestingStatisticService : IUserTestingStatisticService
     {
         #region Fields
-        private ITestResultService service;
+        private readonly ITestResultService service;
         #endregion
 
         #region Constructors

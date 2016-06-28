@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using BLL;
 using MvcPL.Models;
 using PagedList;
-using PagedList.Mvc;
+using BLL.Interfaces;
+using MvcPL.Infrastructure.Mappers;
 
 namespace MvcPL.Controllers
 {
@@ -52,7 +49,7 @@ namespace MvcPL.Controllers
         [ChildActionOnly]
         public ActionResult Find()
         {
-            return PartialView("_Search");
+            return PartialView("_SearchPartial");
         }
 
         /// <summary>
@@ -67,9 +64,8 @@ namespace MvcPL.Controllers
             if (Request.IsAjaxRequest())
             {
                 return Json(tests, JsonRequestBehavior.AllowGet);
-                //return PartialView("_SearchResults", tests);
             }
-            return View("_SearchResults", tests);
+            return View("SearchResults", tests);
         }
 
         /// <summary>

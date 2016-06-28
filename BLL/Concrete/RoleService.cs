@@ -1,12 +1,12 @@
-﻿using DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using DAL.Interfaces;
+using BLL.Mappers;
+using BLL.Interfaces;
+using BLL.DTO;
 
-namespace BLL
+namespace BLL.Concrete
 {
     /// <summary>
     /// Represents User functionality.
@@ -14,8 +14,8 @@ namespace BLL
     public class RoleService : IRoleService
     {
         #region Fields
-        private Service service;
-        private IRoleRepository repository;
+        private readonly Service service;
+        private readonly IRoleRepository repository;
         #endregion
 
         #region Constructors

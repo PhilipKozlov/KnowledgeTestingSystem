@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
-using BLL;
 using System.Collections.Generic;
+using BLL.Interfaces;
+using BLL.DTO;
 
-namespace MvcPL
+namespace MvcPL.Infrastructure.Authentication
 {
     /// <summary>
     /// Defines the contract to provide custom membership services.

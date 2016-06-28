@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 
 namespace MvcPL.Models
 {
@@ -24,7 +22,6 @@ namespace MvcPL.Models
         /// </summary>
         [Required]
         [Display(Name = "Question text")]
-        [MaxLength(200)]
         public string QuestionText { get; set; }
 
         /// <summary>

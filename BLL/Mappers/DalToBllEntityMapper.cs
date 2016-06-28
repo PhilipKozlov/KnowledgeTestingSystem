@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
+﻿using System.Linq;
+using DAL.DTO;
+using BLL.DTO;
 
-namespace BLL
+namespace BLL.Mappers
 {
     /// <summary>
     /// Maps DAL entities to BLL entities.

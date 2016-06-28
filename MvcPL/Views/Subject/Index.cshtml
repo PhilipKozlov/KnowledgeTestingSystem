@@ -8,8 +8,6 @@
 }
 <div class="container">
 
-
-
     <div class="row">
         <div class="page-header">
             <h1>Subjects</h1>
@@ -29,12 +27,12 @@
                             UpdateTargetId = "tests",
                             Url = Url.Action("Index", "Test", item)
                         })
-
-
-                        @*@Html.ActionLink(item.Name, "Index", "Test", item, null)*@
                     </li>
                 }
-                @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber }))
+                @if (Model.PageCount > 1)
+                {
+                    @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber }))
+                }
 
             </ul>
         </div>
@@ -47,7 +45,7 @@
             </div>
         </div>
 
-        </div>
+    </div>
 </div>
 
 

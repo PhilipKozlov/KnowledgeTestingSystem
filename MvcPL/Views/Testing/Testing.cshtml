@@ -24,12 +24,11 @@
                 @{
                     if (Model.QuestionNumber == ViewBag.NumberOfQuestions)
                     {
-                        <input type="submit" value="Finish" class="btn btn-primary" />
-                        @ViewBag.Time = 0;
+                        @Html.SubmitButton("Finish", "btn btn-primary")
                     }
                     else
                     {
-                        <input type="submit" value="Next" class="btn btn-primary" />
+                        @Html.SubmitButton("Next", "btn btn-primary")
                     }
                 }
             </div>

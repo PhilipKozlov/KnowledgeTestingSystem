@@ -1,18 +1,21 @@
-﻿<script type="text/javascript">
+﻿
+<script type="text/javascript">
     function processData(data) {
         var target = $("#search-results");
         target.empty();
+        target.append(data.length + " results found:\n")
         for (var i = 0; i < data.length; i++) {
             var test = data[i];
             var url = '@Url.Action("Test", "Test", new { id = "_id" })';
             url = url.replace('_id', test.Id);
+            target.append(document.createElement("br"));
             target.append($(document.createElement('a'))
                 .attr('href', url)
                 .text(test.Name));
         }
+        
     }
 </script>
-
 
 @using (Ajax.BeginForm("Find", "Test", FormMethod.Post,
                                 new AjaxOptions

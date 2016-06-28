@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity.ModelConfiguration;
 
 namespace ORM
 {
@@ -19,7 +14,7 @@ namespace ORM
         {
             HasKey(p => p.Id);
             Property(p => p.TestId).IsRequired();
-            Property(p => p.QuestionText).HasMaxLength(200).IsRequired();
+            Property(p => p.QuestionText).IsRequired();
         }
     }
 }

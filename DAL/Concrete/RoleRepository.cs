@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ORM;
 using System.Data.Entity;
 using System.Linq.Expressions;
+using DAL.Mappers;
+using DAL.Interfaces;
+using DAL.DTO;
 
-namespace DAL
+namespace DAL.Concrete
 {
     /// <summary>
     /// Represents role repository.
@@ -15,7 +16,7 @@ namespace DAL
     public class RoleRepository : IRoleRepository
     {
         #region Fields
-        private Repository<Role> repository;
+        private readonly Repository<Role> repository;
         #endregion
 
         #region Constructors

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using DAL.Mappers;
+using DAL.Interfaces;
+using DAL.DTO;
 
-namespace DAL
+namespace DAL.Concrete
 {
     /// <summary>
     /// Represents test repository.
@@ -15,8 +16,8 @@ namespace DAL
     public class TestRepository : ITestRepository
     {
         #region Fields
-        private Repository<Test> repository;
-        private DbContext context;
+        private readonly Repository<Test> repository;
+        private readonly DbContext context;
         #endregion
 
         #region Constructors

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MvcPL.Models
 {
@@ -56,7 +52,7 @@ namespace MvcPL.Models
         /// <summary>
         /// Gets or sets Captcha string represented by Captcha image.
         /// </summary>
-        [Required]
+        [Required(ErrorMessage = "Wrong code, please try again.")]
         [Display(Name = "Enter the code from the image")]
         public string Captcha { get; set; }
     }

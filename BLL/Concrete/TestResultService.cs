@@ -1,12 +1,12 @@
-﻿using DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+using DAL.Interfaces;
+using BLL.Mappers;
+using BLL.Interfaces;
+using BLL.DTO;
 
-namespace BLL
+namespace BLL.Concrete
 {
     /// <summary>
     /// Represents TestResult functionality.
@@ -14,7 +14,7 @@ namespace BLL
     public class TestResultService : ITestResultService
     {
         #region Fields
-        private ITestResultRepository repository;
+        private readonly ITestResultRepository repository;
         #endregion
 
         #region Constructors

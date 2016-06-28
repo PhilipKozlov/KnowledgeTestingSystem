@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace MvcPL.Models
 {
@@ -24,7 +20,6 @@ namespace MvcPL.Models
         /// </summary>
         [Required]
         [Display(Name = "Answer text")]
-        [MaxLength(200)]
         public string AnswerText { get; set; }
         /// <summary>
         /// Gets or sets weather the answer is correct.

@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using ORM;
 using System.Data.Entity;
 using Logger;
 
@@ -17,9 +14,9 @@ namespace DAL
     internal class Repository<TEntity> where TEntity : class
     {
         #region Fields
-        private DbContext context;
-        private DbSet<TEntity> dbSet;
-        private ILogger logger = LogManager.GetLogger();
+        private readonly DbContext context;
+        private readonly DbSet<TEntity> dbSet;
+        private readonly ILogger logger = LogManager.GetLogger();
         #endregion
 
         #region Constructors

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using BLL;
-using MvcPL.Models;
+﻿using System.Web.Mvc;
 using PagedList;
-using PagedList.Mvc;
+using BLL.Interfaces;
+using MvcPL.Infrastructure.Mappers;
 
 namespace MvcPL.Controllers
 {
@@ -61,7 +56,6 @@ namespace MvcPL.Controllers
         /// </summary>
         /// <param name="pageNumber"> Page number.</param>
         /// <returns> UserStatisticPartial view.</returns>
-        [ChildActionOnly]
         public ActionResult UserStatistics(int? pageNumber)
         {
             var statistics = testingStatisticService.GetStatistics()?.ToTestingStatisticViewModel();
