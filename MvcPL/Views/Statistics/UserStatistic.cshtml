@@ -1,0 +1,75 @@
+﻿@model MvcPL.Models.UserTestingStatisticViewModel
+
+@{
+    ViewBag.Title = "UserStatistic";
+}
+
+<h2>User Statistic</h2>
+
+@if (Model == null)
+{
+    <div>
+        There are currently no testing statistics for this account
+        because you didn`t complete any tests.
+    </div>
+}
+else
+{
+<div>
+    <h4>User statistics</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfCompletedTests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfCompletedTests)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AverageGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AverageGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinGrade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinGrade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxTestTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxTestTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MinTestTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MinTestTime)
+        </dd>
+
+    </dl>
+</div>
+}
+<p>
+    @Html.ActionLink("Back", "Index", "Home")
+</p>

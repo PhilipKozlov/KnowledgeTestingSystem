@@ -1,0 +1,71 @@
+﻿@model IPagedList<MvcPL.Models.UserViewModel>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Management</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Roles)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @string.Join(",", item.Roles.Select(r => r.Name))
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", new { id = item.Id })">
+                <i class="glyphicon glyphicon-pencil"></i>
+                <span class="sr-only">Edit</span>
+            </a>
+            <a href="@Url.Action("Details", new { id = item.Id })">
+                <i class="glyphicon glyphicon-expand"></i>
+                <span class="sr-only">Details</span>
+            </a>
+            <a href="@Url.Action("Delete", new { id = item.Id })">
+                <i class="glyphicon glyphicon-remove"></i>
+                <span class="sr-only">Details</span>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber}))

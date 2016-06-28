@@ -1,0 +1,29 @@
+﻿@model MvcPL.Models.AnswerViewModel
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.QuestionId)
+@Html.HiddenFor(m => m.AnswerText)
+@Html.HiddenFor(m => m.IsCorrect)
+
+<div class="form-group">
+    <div class="col-md-6">
+        <table>
+            <tr>
+                <td>
+                    @if ((int)ViewData["correctAnswers"] > 1)
+                    {
+                        @Html.CheckBoxFor(m => m.IsSelected, Model.Id)
+                    }
+                    else
+                    {
+                        @*@Html.CheckBoxFor(m => m.IsSelected, Model.Id)*@
+                        @Html.RadioButtonFor(m => m.IsSelected, true, new { Name = "answer" })
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.AnswerText)
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

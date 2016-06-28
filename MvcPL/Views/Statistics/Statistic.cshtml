@@ -1,0 +1,57 @@
+﻿@model MvcPL.Models.TestingStatisticViewModel
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Statistic";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Statistic</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalNumberOfTests)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalNumberOfTests)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedTestsPerDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedTestsPerDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompletedTestsPerDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompletedTestsPerDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalTestingTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalTestingTime)
+        </dd>
+
+    </dl>
+</div>
+
+@if (Model.UserStatistics.Count() > 0)
+{
+    @Html.Partial("_UserStatisticPartial", Model.UserStatistics.ToPagedList(1, 10))
+}
+
+<p>
+    @Html.ActionLink("Back", "Index", "Home")
+</p>

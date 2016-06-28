@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Welcome";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+@if (Request.IsAuthenticated)
+{
+    @Html.Action("Index", "Subject")
+}
+else
+{
+    <p>
+       Welcome to Knowledge Testing System. 
+       You can test you knowledge in various subjects by completing tests.
+       In order to do so you must first @Html.ActionLink("log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) or 
+       @Html.ActionLink("register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }).
+    </p>
+}
+
+

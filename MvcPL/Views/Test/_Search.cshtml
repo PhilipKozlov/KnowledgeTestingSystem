@@ -1,0 +1,36 @@
+﻿<script type="text/javascript">
+    function processData(data) {
+        var target = $("#search-results");
+        target.empty();
+        for (var i = 0; i < data.length; i++) {
+            var test = data[i];
+            var url = '@Url.Action("Test", "Test", new { id = "_id" })';
+            url = url.replace('_id', test.Id);
+            target.append($(document.createElement('a'))
+                .attr('href', url)
+                .text(test.Name));
+        }
+    }
+</script>
+
+
+@using (Ajax.BeginForm("Find", "Test", FormMethod.Post,
+                                new AjaxOptions
+                                {
+                                    InsertionMode = InsertionMode.Replace,
+                                    HttpMethod = "POST",
+                                    UpdateTargetId = "search-results",
+                                    OnSuccess = "processData"
+                                }))
+{
+    <div class="container" style="float:right;"> 
+        <div class="input-group" style="float:right;">
+            <input style="float:right;" type="text" class="form-control" placeholder="Search" name="testName" id="testName">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+    </div>
+}
+
+ 

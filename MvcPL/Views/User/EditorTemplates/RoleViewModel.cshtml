@@ -1,0 +1,15 @@
+﻿@model MvcPL.Models.RoleViewModel
+
+@Html.HiddenFor(model => model.Id)
+@Html.HiddenFor(model => model.Name)
+@Html.HiddenFor(model => model.Description)
+<table>
+    <tr>
+        <td>
+            @Html.CheckBoxFor(model => model.IsSelected)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Name)
+        </td>
+    </tr>
+</table>

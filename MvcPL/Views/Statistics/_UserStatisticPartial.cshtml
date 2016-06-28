@@ -1,0 +1,64 @@
+﻿@model IPagedList<MvcPL.Models.UserTestingStatisticViewModel>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "UserStatisticViewModel";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().NumberOfCompletedTests)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().AverageGrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaxGrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MinGrade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaxTestTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MinTestTime)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.UserName, "UserDetails", "User", new { userName = item.UserName }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfCompletedTests)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AverageGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxTestTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MinTestTime)
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, pageNumber => Url.Action("UserStatistics", new { pageNumber }))

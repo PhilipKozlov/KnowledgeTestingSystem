@@ -1,0 +1,53 @@
+﻿@model IPagedList<MvcPL.Models.SubjectViewModel>
+@using PagedList;
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container">
+
+
+
+    <div class="row">
+        <div class="page-header">
+            <h1>Subjects</h1>
+        </div>
+
+
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                @foreach (var item in Model)
+                {
+                    <li>
+
+                        @Ajax.ActionLink(item.Name, "Index", "Test", item,
+                        new AjaxOptions
+                        {
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "tests",
+                            Url = Url.Action("Index", "Test", item)
+                        })
+
+
+                        @*@Html.ActionLink(item.Name, "Index", "Test", item, null)*@
+                    </li>
+                }
+                @Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber }))
+
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-md-10">
+            <div>@Html.Action("Find", "Test")</div>
+            <div id="tests">
+            </div>
+            <div id="search-results">
+            </div>
+        </div>
+
+        </div>
+</div>
+
+

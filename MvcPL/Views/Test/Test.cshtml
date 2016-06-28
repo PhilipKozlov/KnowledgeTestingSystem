@@ -1,0 +1,53 @@
+﻿@model MvcPL.Models.TestViewModel
+@{
+    ViewBag.Title = "Test";
+}
+
+<div class="container">
+
+    <h1>@Model.Name</h1>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SubjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+        @{
+
+            if (Model.IsTimed)
+            {
+                <dt>@Html.DisplayNameFor(model => model.TimeToComplete)</dt>
+                <dd>@Html.DisplayFor(model => model.TimeToComplete)</dd>
+            }
+            else
+            {
+                <dt>@Html.DisplayNameFor(model => model.IsTimed)</dt>
+                <dd>@Html.DisplayFor(model => model.IsTimed)</dd>
+            }
+         }
+        <dt>Number of questions</dt>
+        <dd>@Model.Questions.Count()</dd>
+
+    </dl>
+
+    @Html.ActionLink("Start test", "Testing", "Testing", new { index = 1 }, htmlAttributes: new { @class = "btn btn-default" })
+
+</div>
+

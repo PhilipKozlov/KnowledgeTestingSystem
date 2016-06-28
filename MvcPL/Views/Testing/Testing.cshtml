@@ -1,0 +1,38 @@
+﻿@model MvcPL.Models.QuestionViewModel
+
+@{
+    ViewBag.Title = "Testing";
+}
+
+<div>
+    <h3>@Model.QuestionNumber.@Model.QuestionText</h3>
+</div>
+
+@using (Html.BeginForm("Testing", "Testing"))
+{
+    @Html.HiddenFor(model => model.QuestionNumber)
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Answers, new { correctAnswers = Model.CorrectAnswers.Count() })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                @{
+                    if (Model.QuestionNumber == ViewBag.NumberOfQuestions)
+                    {
+                        <input type="submit" value="Finish" class="btn btn-primary" />
+                        @ViewBag.Time = 0;
+                    }
+                    else
+                    {
+                        <input type="submit" value="Next" class="btn btn-primary" />
+                    }
+                }
+            </div>
+        </div>
+    </div>
+}

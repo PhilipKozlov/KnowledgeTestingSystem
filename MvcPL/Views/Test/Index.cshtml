@@ -1,0 +1,26 @@
+﻿@model IPagedList<MvcPL.Models.TestViewModel>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Test";
+}
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Tests</h1>
+    </div>
+    <ul class="list-group">
+
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                @Html.ActionLink(item.Name, "Test", new { id = item.Id})
+            </li>
+        }
+
+    </ul>
+
+</div>
+
+@Html.PagedListPager(Model, pageNumber => Url.Action("Index", new { pageNumber }))
