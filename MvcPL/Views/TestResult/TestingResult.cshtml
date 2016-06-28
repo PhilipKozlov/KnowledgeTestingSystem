@@ -1,0 +1,48 @@
+﻿@model MvcPL.Models.TestResultViewModel
+
+@{
+    ViewBag.Title = "TestingResult";
+}
+
+<h2>Your test result</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeSpent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeSpent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(" Home", "Index", "Home")
+</p>
